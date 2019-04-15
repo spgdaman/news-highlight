@@ -1,18 +1,14 @@
 import urllib.request, json
+from . import Source
 
 # Getting api key
-api_key = None
+api_key = app.config['NEWS_API_KEY']
 
 # Getting the base url
-base_url = None
+base_url = app.config['NEWS_API_BASE_URL']
 
-def configure_request(app):
-    global api_key, base_url
-    api_key = main.config['NEWS_API_KEY']
-    base_url = main.config['NEWS_API_BASE_URL']
-
-def get_news_source(category):
-    get_base_url = base_url.format(category, api_key)
+def get_news_source():
+    get_base_url = base_url.format(api_key)
 
     with urllib.request.urlopen(get_base_url) as url:
         get_url_data = url.read()
@@ -25,3 +21,20 @@ def get_news_source(category):
             results = process_results(results_list)
 
     return results
+
+def process_results(source_list):
+    source_result = []
+
+    for source in source_list:
+        id = source.get("id")
+        name = source.get("name")
+        description = source.get("description")
+        url = source.get("url")
+        category = source.get("category")
+        langiage = source.get("language")
+        country = source.get("country")
+
+        source_object = Source(id,name,description,url,category,language,country)
+        source_result.append(source_object)
+
+    return source_result
