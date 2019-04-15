@@ -1,6 +1,7 @@
 import urllib.request, json
 from config import Config
 from .models import Source
+import requests
 
 # Getting api key
 api_key = Config.NEWS_API_KEY
@@ -42,6 +43,18 @@ def process_results(source_list):
 
 def get_articles(source_id):
     url = 'https://newsapi.org/v2/top-headlines?'
-    end_points = {"apikey": api_key, "sources": source_id}
-    response = requests.get(url, end_points = end_points)
-    return response["article"]
+    # end_points = {"apikey": api_key, "sources": source_id}
+    # response = requests.get(url, end_points = end_points)
+    # return response["articles"]
+
+    with urllib.request.open() as url:
+        get_url_data = url.read()
+        get_url_response =  json.loads(get_url_data)
+
+        results = None
+
+        if get_url_response['articles']:
+            results_list = get_url_response['articles']
+            results = process_results(results_list)
+
+    return results
