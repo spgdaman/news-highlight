@@ -1,3 +1,7 @@
-{{title}}
-
 {% extends 'base.html' %}
+{{title}}
+<ul>
+  {% for item in source %}
+    <li>{{ item.name }}</li>
+  {% endfor %}
+</ul>

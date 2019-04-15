@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for
-from . import main #, get_news_source
+from . import main
+from ..requests import get_news_source
 
 # views
 @main.route('/')
@@ -9,5 +10,5 @@ def index():
     '''
 
     title = "Hello I work"
-    #sources = get_news_source()
-    return render_template('index.html', title = title)
+    sources = get_news_source()
+    return render_template('index.html', title = title, source=sources)
