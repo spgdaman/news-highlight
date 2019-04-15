@@ -4,9 +4,8 @@ class Config:
     '''
     General configuration parent class
     '''
-    NEWS_API_BASE_URL = ''
+    NEWS_API_BASE_URL = 'https://newsapi.org/v2/sources?apiKey='
     NEWS_API_KEY = '753878d6347e4c429217670dfc2e0ee5'
-    SECRET_KEY = os.urandom(32)
 
 class ProdConfig(Config):
     '''
