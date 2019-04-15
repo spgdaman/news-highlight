@@ -1,16 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-  <ul>
+
+  <!-- <ul>
     {% for item in source %}
       <li>{{ item.name }}</li>
       <p>{{ item.description }}</p>
       <p>{{ item.url }}</p>
       <p>{{ item.category }}</p>
     {% endfor %}
-  </ul>
+  </ul> -->
+<div class="container">
+  <div class="container card-columns">
+    {% for item in source %}
+    <div class="card">
+      <div class="card-header">
+        <p>{{ item.name }}</p>
+      </div>
+      <div class="card-body">
+        <p>{{ item.description }}</p>
+        <a href="{{ item.url }}" class="btn btn-primary">Visit site</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
+
+
+
+<!-- <div class="container card-columns">
+  {% for item in source %}
+  <div class="card">
+    <div class="card-header">
+      <h4>{{ item.name }}</h4>
+      <p></p>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{ item.description }}</p>
+      <a href="#" class="btn btn-primary">{{ item.url }}Visit site</a>
+    </div>
+  </div>
+  {% endfor %}
+</div> -->
+
+
+<!-- <div class="container card-columns">
+  {% for source in sources %}
+    <div class="card">
+      <div class="card-header">
+        <h4>{{ item.name }}</h4>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ item.description }}</p>
+        <a href="#" class="btn btn-primary">{{ item.url }}Visit site</a>
+      </div>
+    </div>
+  {% endfor %}
+</div> -->
 
 {% endblock %}
