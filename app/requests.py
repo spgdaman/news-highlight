@@ -39,3 +39,9 @@ def process_results(source_list):
         source_result.append(source_object)
 
     return source_result
+
+def get_articles(source_id):
+    url = 'https://newsapi.org/v2/top-headlines?'
+    end_points = {"apikey": api_key, "sources": source_id}
+    response = requests.get(url, end_points = end_points)
+    return response["article"]
