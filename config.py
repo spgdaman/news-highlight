@@ -5,7 +5,7 @@ class Config:
     General configuration parent class
     '''
     NEWS_API_BASE_URL = ''
-    NEWS_API_KEY = ''
+    NEWS_API_KEY = '753878d6347e4c429217670dfc2e0ee5'
     SECRET_KEY = os.urandom(32)
 
 class ProdConfig(Config):
@@ -28,6 +28,6 @@ class DevConfig(Config):
     DEBUG = True
 
 config_options = {
-'development': DevcConfig,
+'development': DevConfig,
 'production': ProdConfig
 }
