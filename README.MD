@@ -1,7 +1,5 @@
 # News Highlight
 
-
-
 The project is about a simple website that consumes the newsapi.org's api, to display news sources, articles and redirects users to the article's source website.
 
 ## Installation
